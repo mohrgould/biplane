@@ -1,0 +1,22 @@
+{
+  "name": "biplane",
+  "version": "0.0.1",
+  "description": "Biplane game inspired by Sopwith",
+  "main": "index.js",
+  "scripts": {
+    "build": "node -e 'require(\"./build\")();'",
+    "watch": "node watch"
+  },
+  "author": {
+    "name": "David Gould",
+    "email": "david@gould.io",
+    "url": "https://gould.io/"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {},
+  "devDependencies": {
+    "browserify": "^13.1.1",
+    "node-watch": "^0.4.1",
+    "tiny-lr": "^1.0.3"
+  }
+}
