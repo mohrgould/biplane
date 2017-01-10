@@ -23,5 +23,6 @@ module.exports = function build () {
     fs.mkdirSync(buildDir);
   }
 
-  bundle(path.join('src', 'index.js'), path.join(buildDir, 'bundle.js'));
+  bundle(path.join('src', 'index.js'), path.join(buildDir, 'game.js'));
+  bundle(path.join('.', 'ed.js'), path.join(buildDir, 'ed.js'));
 };

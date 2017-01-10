@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Biplane game inspired by Sopwith",
   "main": "index.js",
+  "repository": "https://github.com/mohrgould/biplane",
   "scripts": {
     "build": "node -e 'require(\"./build\")();'",
     "watch": "node watch"

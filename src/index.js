@@ -1,70 +1,53 @@
 "use strict";
 
+var World = require('./World');
+
 var keys = require('./keys')(document);
 var entities = require('./entities');
+var ground = require('./map');
 
-var World = require('./World');
+var worldHeight = 2000;
 
 var viewWidth = 640;
 var viewHeight = 480;
 
-var worldHeight = 2000;
-var worldWidth = 10000;
-
 var container = document.createElement('div');
 container.style.position = 'relative';
-
 var canvas = document.createElement('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 canvas.style.background = '#bdf';
-
 container.appendChild(canvas);
-
-var ground = new Array(worldWidth);
-for (var i=0; i<worldWidth; i++) {
-  if (i < 1000) {
-    ground[i] = 1 * (i - 500) + 1200;
-  } else if (i < 1887) {
-    ground[i] = 1700;
-  } else {
-    ground[i] = 1700 + 200 * Math.sin(i/200);
-  }
-}
 
 var world = new World(keys, canvas, ground, worldHeight);
 
-world.add(new entities.Plane(world, 1100, 1685));
-world.add(new entities.Bunker(world, 2000));
-world.add(new entities.Bunker(world, 3000));
-world.add(new entities.Bunker(world, 4000));
-world.add(new entities.Bunker(world, 4500));
-world.add(new entities.Bunker(world, 5000));
-world.add(new entities.Bunker(world, 5100));
-world.add(new entities.Bunker(world, 5200));
-world.add(new entities.Bunker(world, 5300));
-world.add(new entities.Bunker(world, 5400));
-world.add(new entities.Bunker(world, 5500));
-world.add(new entities.Bunker(world, 5600));
-world.add(new entities.Bunker(world, 5700));
-world.add(new entities.Bunker(world, 5800));
-world.add(new entities.Bunker(world, 5900));
-world.add(new entities.Bunker(world, 6000));
-world.add(new entities.Bunker(world, 6100));
-world.add(new entities.Bunker(world, 6200));
-world.add(new entities.Bunker(world, 6300));
-world.add(new entities.Bunker(world, 6400));
-world.add(new entities.Bunker(world, 6500));
-world.add(new entities.Bunker(world, 6600));
-world.add(new entities.Bunker(world, 6700));
-world.add(new entities.Bunker(world, 6800));
-world.add(new entities.Bunker(world, 6900));
-world.add(new entities.Bunker(world, 7000));
-world.add(new entities.Bunker(world, 7200));
-world.add(new entities.Bunker(world, 7400));
-world.add(new entities.Bunker(world, 7600));
-world.add(new entities.Bunker(world, 7800));
-world.add(new entities.Bunker(world, 8000));
+var startX = 3700;
+world.add(new entities.Plane(world, startX, ground[startX]-10));
+
+var locs = [
+  100,
+  140,
+  200,
+  270,
+  340,
+  400,
+  470,
+
+  780,
+  890,
+  880,
+  1040,
+  1080,
+  1150,
+  1190,
+  1270,
+  1350,
+  1380,
+];
+
+for (var i=0; i<locs.length; i++)  {
+  world.add(new entities.Bunker(world, locs[i] * 6));
+}
 
 var guide = document.createElement('div');
 guide.style.position = 'absolute';

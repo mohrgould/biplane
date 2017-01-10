@@ -25,6 +25,10 @@ function changed (files) {
   }, 50);
 }
 
+watch(['ed.js'], function (file) {
+  build();
+});
+
 watch('src', { recursive: true }, function (file)  {
   if (!file.match(/\.[^\/]+\.sw.$/)) {
     build();
@@ -35,6 +39,6 @@ watch('build', { recursive: true }, function (file)  {
   changed(file);
 });
 
-watch('./index.html', function (file) {
+watch(['./index.html', './ed.html'], function (file) {
   changed(file);
 });

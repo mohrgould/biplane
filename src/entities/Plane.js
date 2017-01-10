@@ -121,7 +121,7 @@ module.exports = function Plane (world, x, y) {
         mayShoot = false;
 
         setTimeout(function () {
-          var exit = vectors.add({x: that.x, y: that.y}, vectors.rotate({x: 3*width/4, y: 0}, that.r));
+          var exit = vectors.add({x: that.x, y: that.y}, vectors.rotate({x: 3*width/4 + width * that.v, y: 0}, that.r));
           var bullet = new Bullet(world, exit.x, exit.y, 1.5, that.r);
           world.add(bullet);
           mayShoot = true;
@@ -134,7 +134,7 @@ module.exports = function Plane (world, x, y) {
         mayBomb = false;
         var bombRelativePos = vectors.rotate({
           x: 0,
-          y: 2 * height * (inverted ? -1 : 1)
+          y: 2 * height * (inverted ? -1 : 1)  + height * this.v
         }, this.r);
 
         var bombVec = vectors.rotate({x: this.v, y: 0}, this.r);

@@ -24,8 +24,8 @@ module.exports = function Bomb (world, x, y, v, r) {
   };
 
   this.update = function (dur) {
-    this.x += vx * dur;
-    this.y += vy * dur;
+    this.x += vx * dur * 0.9;
+    this.y += vy * dur * 0.9;
     vy += 0.0001 * dur;
 
     for (var i=0; i<world.entities.length; i++) {
