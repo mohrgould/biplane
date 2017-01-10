@@ -5,7 +5,7 @@ var vectors = require('./vectors');
 module.exports = function Bunker (world, x) {
   this.collides = true;
   this.x = x;
-  this.y = world.ground[x];
+  this.y = world.ground[x] - 21;
   this.r = 0;
 
   var w = 50;
@@ -27,12 +27,12 @@ module.exports = function Bunker (world, x) {
         var exit = vectors.add({x: this.x, y: this.y}, vectors.rotate({x: w, y: 0}, angle));
         setTimeout(function () {
           if (alive) {
-            world.add(new Bullet(world, exit.x, exit.y, 0.25, angle));
+            world.add(new Bullet(world, exit.x, exit.y, 0.4, angle));
           }
-        }, Math.random() * 2000);
+        }, Math.random() * 1000);
         setTimeout(function () {
           mayShoot = true;
-        }, 3000);
+        }, 1500);
       }
     }
   };
