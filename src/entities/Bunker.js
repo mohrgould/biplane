@@ -19,7 +19,7 @@ module.exports = function Bunker (world, x) {
     var distx = world.entities[0].x - this.x;
     var disty = world.entities[0].y - this.y;
     var dist = Math.sqrt(Math.pow(distx, 2) + Math.pow(disty, 2))
-    if (dist < 600) {
+    if (dist < 400) {
       if (mayShoot) {
         mayShoot = false;
         var deviation = Math.random() * Math.PI / 16 + Math.PI / 32;
@@ -27,12 +27,12 @@ module.exports = function Bunker (world, x) {
         var exit = vectors.add({x: this.x, y: this.y}, vectors.rotate({x: w, y: 0}, angle));
         setTimeout(function () {
           if (alive) {
-            world.add(new Bullet(world, exit.x, exit.y, 0.2, angle));
+            world.add(new Bullet(world, exit.x, exit.y, 0.25, angle));
           }
-        }, Math.random() * 1000);
+        }, Math.random() * 2000);
         setTimeout(function () {
           mayShoot = true;
-        }, 5000);
+        }, 3000);
       }
     }
   };
