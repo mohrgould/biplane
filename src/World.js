@@ -45,9 +45,11 @@ module.exports = function (keys, el, ground, worldHeight) {
     for (var i=start; i<=end; i++) {
       if (this.ground[i]) {
         if (this.ground[i] > 0) {
-          this.ground[i] += depth - (Math.abs(x - i));
-          if (this.ground[i] > this.height) {
-            this.ground[i] = this.height;
+          if (i < 3650 || i > 3800) {
+            this.ground[i] += depth - (Math.abs(x - i));
+            if (this.ground[i] > this.height) {
+                this.ground[i] = this.height;
+            }
           }
         }
       }
