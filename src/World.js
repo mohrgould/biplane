@@ -108,8 +108,12 @@ module.exports = function (keys, el, ground, worldHeight) {
     }
 
     ctx.save();
-    ctx.fillStyle = '#666';
-    ctx.fillText(Math.round(this.entities[0].x) + ',' + Math.round(this.entities[0].y), 10, 20);
+    ctx.fillStyle = '#444';
+    ctx.fillText(
+      Math.round(this.entities[0].x) + ',' + Math.round(this.entities[0].y),
+      20,
+      el.height-20
+    );
     ctx.restore();
   };
 };

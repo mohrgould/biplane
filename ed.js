@@ -1,4 +1,4 @@
-var ground = require('./map');
+var ground = require('./src/map');
 
 var width = 10000;
 var height = 2000;
