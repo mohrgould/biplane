@@ -16,7 +16,7 @@ container.style.position = 'relative';
 var canvas = document.createElement('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-canvas.style.background = '#bdf';
+canvas.style.background = '#d5f6ff';
 container.appendChild(canvas);
 
 var world = new World(keys, canvas, ground, worldHeight);

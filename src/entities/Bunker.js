@@ -5,11 +5,11 @@ var vectors = require('./vectors');
 module.exports = function Bunker (world, x) {
   this.collides = true;
   this.x = x;
-  this.y = world.ground[x] - 21;
+  this.y = world.ground[x] - 10;
   this.r = 0;
 
   var w = 50;
-  var h = 40;
+  var h = 30;
 
   var alive = true;
 
@@ -38,11 +38,8 @@ module.exports = function Bunker (world, x) {
   };
 
   this.draw = function (ctx) {
-    ctx.lineWidth = 2;
-    ctx.fillStyle = '#666';
-    ctx.strokeStyle = '#444';
+    ctx.fillStyle = '#597698';
     ctx.fillRect(-w/2, -h/2, w, h);
-    ctx.strokeRect(-w/2, -h/2, w, h);
   };
 
   this.contains = function (x, y) {

@@ -13,14 +13,11 @@ module.exports = function Bomb (world, x, y, v, r) {
   this.r = 0;
 
   this.draw = function (ctx) {
-    ctx.fillStyle = '#555';
-    ctx.strokeStyle = '#444';
-    ctx.lineWidth = 4;
+    ctx.fillStyle = '#999';
     ctx.beginPath();
-    ctx.arc(0, 0, 6, 0, Math.PI*2, true);
+    ctx.arc(0, 0, 8, 0, Math.PI*2, true);
     ctx.closePath();
     ctx.fill();
-    ctx.stroke();
   };
 
   this.update = function (dur) {

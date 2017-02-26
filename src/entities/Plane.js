@@ -56,47 +56,42 @@ module.exports = function Plane (world, x, y) {
   this.draw = function (ctx) {
     if (inverted) ctx.scale(1, -1);
 
-    ctx.lineWidth = 1.5;
-    ctx.strokeStyle = '#333';
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = '#666';
 
     // gear linkage
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(width/3, height/1.4);
-    ctx.lineTo(width/2, height/6);
+    ctx.lineTo(width/2.25, height/6);
     ctx.stroke();
 
     // wing linkage
     ctx.beginPath();
-    ctx.moveTo(width/4, 0);
-    ctx.lineTo(width/4, -height/2.5);
+    ctx.moveTo(width/4.5, 0);
+    ctx.lineTo(width/4.5, -height/2.5);
     ctx.moveTo(width/2.8, 0);
-    ctx.lineTo(width/2.5, -height/2.5);
+    ctx.lineTo(width/2.6, -height/2.5);
     ctx.stroke();
-
-    ctx.strokeStyle = '#222';
 
     // gear
     ctx.beginPath();
     ctx.arc(width/3, height/1.4, 4, 0, Math.PI*2, true);
     ctx.closePath();
-    ctx.fillStyle = '#555';
+    ctx.fillStyle = '#778';
     ctx.fill();
-    ctx.stroke();
 
-    ctx.fillStyle = '#c21';
-    ctx.strokeStyle = '#610';
+    ctx.fillStyle = '#ef333c';
 
     // wing
     ctx.lineWidth = 1.5;
     ctx.beginPath();
-    ctx.moveTo(width/8, -height/2.5);
+    ctx.moveTo(width/8, -height/2.8);
     ctx.lineTo(width/2.2, -height/2.5);
-    ctx.lineTo(width/2.2, -height/1.7);
+    ctx.lineTo(width/2.2, -height/1.6);
     ctx.lineTo(width/8, -height/2);
     ctx.closePath();
     ctx.fill();
-    ctx.stroke();
 
     // fuselage
     ctx.lineWidth = 2;
@@ -112,7 +107,6 @@ module.exports = function Plane (world, x, y) {
     ctx.lineTo(-width/2.5, height/3);
     ctx.closePath();
     ctx.fill();
-    ctx.stroke();
   };
 
   this.handleInput = function (dur) {
@@ -270,7 +264,7 @@ module.exports = function Plane (world, x, y) {
       var p = vectors.add({x: this.x, y: this.y}, localPs[i]);
       groundY = world.ground[Math.floor(p.x)];
       if (p.y > groundY) {
-        collisionOffset = Math.min(collisionOffset, groundY - p.y);
+        collisionOffset = Math.min(collisionOffset, groundY - p.y + 2);
         if (i < 4 || !alive) { // don't crash on gear collision if the plane is still alive
           if (!crashed) {
             crashed = true;

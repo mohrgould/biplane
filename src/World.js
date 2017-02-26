@@ -65,9 +65,7 @@ module.exports = function (keys, el, ground, worldHeight) {
     var offsetX = posX - Math.floor(vw/2);
     var offsetY = posY - Math.floor(vh/2);
     
-    ctx.fillStyle = '#584';
-    ctx.strokeStyle = '#453';
-    ctx.lineWidth = 4;
+    ctx.fillStyle = '#75b465';
 
     ctx.beginPath();
     ctx.clearRect(0, 0, vw, vh);
@@ -97,12 +95,10 @@ module.exports = function (keys, el, ground, worldHeight) {
     ctx.lineTo(lastX, vh-1);
     ctx.lineTo(0, vh-1);
     ctx.lineTo(firstX, vh -1);
-    ctx.stroke()
     ctx.fill();
 
     for (i=this.entities.length-1; i>=0; i--) {
       ctx.save();
-      ctx.lineWidth = 2;
       ctx.translate(this.entities[i].x - offsetX, this.entities[i].y - offsetY);
       ctx.rotate(this.entities[i].r);
       this.entities[i].draw(ctx);
