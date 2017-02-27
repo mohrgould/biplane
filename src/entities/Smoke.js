@@ -1,11 +1,13 @@
-module.exports = function Smoke (world, x, y, size) {
+module.exports = function Smoke (world, x, y, size, rgb) {
   this.r = 0;
   this.x = x;
   this.y = y;
+  this.rgb = rgb || [ 224, 255, 255 ];
+
   this.collides = false;
   var that = this;
 
-  var alpha = 0.4;
+  var alpha = 0.3;
 
   this.update = function (dur) {
     alpha -= dur / 2000;
@@ -16,7 +18,7 @@ module.exports = function Smoke (world, x, y, size) {
 
   this.draw = function (ctx) {
     ctx.beginPath();
-    ctx.fillStyle = 'rgba(255,255,255,' + alpha + ')';
+    ctx.fillStyle = 'rgba(' + this.rgb[0] + ',' + this.rgb[1] + ',' + this.rgb[2] + ',' + alpha + ')'; // 255,255,255,' + alpha + ')';
     ctx.arc(0, 0, size, 0, Math.PI*2);
     ctx.closePath();
     ctx.fill();
