@@ -13,9 +13,9 @@ module.exports = function Bomb (world, x, y, v, r) {
   this.r = 0;
 
   this.draw = function (ctx) {
-    ctx.fillStyle = '#999';
+    ctx.fillStyle = '#9aa';
     ctx.beginPath();
-    ctx.arc(0, 0, 8, 0, Math.PI*2, true);
+    ctx.arc(0, 0, 6, 0, Math.PI*2, true);
     ctx.closePath();
     ctx.fill();
   };
@@ -33,14 +33,14 @@ module.exports = function Bomb (world, x, y, v, r) {
     }
 
     if (world.ground[Math.floor(this.x)] < this.y) {
-      world.depress(this.x, 80);
+      world.depress(this.x, 60 * Math.random() + 30);
       world.remove(this);
       world.add(new Smoke(world, this.x, this.y - 10, 30));
     }
   };
 
   this.contains = function (x, y) {
-    return Math.sqrt(Math.pow(this.x-x, 2) + Math.pow(this.y-y, 2)) < 10;
+    return Math.sqrt(Math.pow(this.x-x, 2) + Math.pow(this.y-y, 2)) < 7;
   };
 
   this.hit = function (n) {
