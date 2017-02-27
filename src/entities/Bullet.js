@@ -12,7 +12,7 @@ module.exports = function Bullet (world, x, y, v, r) {
   var vy = vec.y;
   
   this.draw = function (ctx) {
-    ctx.fillStyle = '#999';
+    ctx.fillStyle = '#bbb';
     ctx.beginPath();
     ctx.scale(2,1);
     ctx.arc(0, 0, 3, 0, Math.PI*2, true);
