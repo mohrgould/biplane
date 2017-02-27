@@ -78,7 +78,7 @@ module.exports = function Plane (world, x, y) {
     ctx.beginPath();
     ctx.arc(width/3, height/1.4, 4, 0, Math.PI*2, true);
     ctx.closePath();
-    ctx.fillStyle = '#778';
+    ctx.fillStyle = '#666';
     ctx.fill();
 
     ctx.fillStyle = '#ef333c';
@@ -128,7 +128,7 @@ module.exports = function Plane (world, x, y) {
         mayBomb = false;
         var bombRelativePos = vectors.rotate({
           x: 0,
-          y: 2 * height * (inverted ? -1 : 1)  + height * this.v
+          y: 1.5 * height * (inverted ? -1 : 1)  + height * this.v
         }, this.r);
 
         var bombVec = vectors.rotate({x: this.v, y: 0}, this.r);
@@ -138,7 +138,7 @@ module.exports = function Plane (world, x, y) {
         world.add(bomb);
         setTimeout(function () {
           mayBomb = true;
-        }, 300);
+        }, 200);
       }
     }
 
@@ -146,7 +146,7 @@ module.exports = function Plane (world, x, y) {
       this.v = Math.min(this.v + (dur / 1000), 5);
       if (maySmoke) {
         maySmoke = false;
-        world.add(new Smoke(world, this.x, this.y, 8));
+        world.add(new Smoke(world, this.x, this.y, 12, [255, 255, 255]));
         setTimeout(function () {
           maySmoke = true;
         }, 50);
@@ -298,6 +298,17 @@ module.exports = function Plane (world, x, y) {
       }
     }
 
+    // smoke when dead
+    if (!alive) {
+      if (maySmoke) {
+        maySmoke = false;
+        world.add(new Smoke(world, this.x, this.y, 12, [224, 224, 224]));
+        setTimeout(function () {
+          maySmoke = true;
+        }, 100);
+      }
+    }
+
     // entity collisions
 
     for (i=0; i<world.entities.length; i++) {
@@ -332,7 +343,7 @@ module.exports = function Plane (world, x, y) {
   };
 
   this.hit = function (n) {
-    world.add(new Smoke(world, this.x, this.y, n));
+    world.add(new Smoke(world, this.x, this.y, n, [255, 224, 224]));
     alive = false;
   };
 };
