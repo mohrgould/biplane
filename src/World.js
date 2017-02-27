@@ -42,11 +42,13 @@ module.exports = function (keys, el, ground, worldHeight) {
     var depth = Math.ceil(n/2);
     var start = x - Math.floor(n/2);
     var end = start + n - 1;
+    var amt;
     for (var i=start; i<=end; i++) {
       if (this.ground[i]) {
         if (this.ground[i] > 0) {
-          if (i < 3650 || i > 3800) {
-            this.ground[i] += depth - (Math.abs(x - i));
+          if (i < 3650 || i > 3800) { // leave home base intact
+            amt = (Math.cos(Math.PI * (x-i)/Math.floor(n/2))/2 + 0.5);
+            this.ground[i] += depth * amt / 2;
             if (this.ground[i] > this.height) {
                 this.ground[i] = this.height;
             }
