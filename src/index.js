@@ -58,9 +58,9 @@ guide.innerHTML = '<dl>' +
   '<dt>N</dt><dd>nitrous</dd>' +
   '<dt>B</dt><dd>bomb</dd>' +
   '<dt>space</dt><dd>gun</dd>' +
-  '<dt>comma</dt><dd>pitch up</dd>' +
-  '<dt>slash</dt><dd>pitch down</dd>' +
-  '<dt>period</dt><dd>invert</dd>' +
+  '<dt>left</dt><dd>pitch up</dd>' +
+  '<dt>right</dt><dd>pitch down</dd>' +
+  '<dt>up</dt><dd>invert</dd>' +
   '</dl>';
 
 var lastTs = null;

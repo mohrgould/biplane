@@ -158,21 +158,21 @@ module.exports = function Plane (world, x, y) {
 
     // handle pitch up/down
 
-    if (world.keys.isDown('COMMA')) {
+    if (world.keys.isDown('LEFT')) {
       this.r -= Math.min(0.3, this.v) * dur / 80 * (inverted ? -1 : 1);
       if (this.r < 0) this.r += Math.PI * 2;
       this.r = this.r % (Math.PI * 2)
       this.v *= Math.pow(0.9998, dur);
     }
 
-    if (world.keys.isDown('SLASH')) {
+    if (world.keys.isDown('RIGHT')) {
       this.r += Math.min(0.3, this.v) * dur / 80 * (inverted ? -1 : 1);
       if (this.r < 0) this.r += Math.PI * 2;
       this.r = this.r % (Math.PI * 2)
       this.v *= Math.pow(0.9998, dur);
     }
     
-    if (world.keys.isDown('PERIOD')) {
+    if (world.keys.isDown('UP') || world.keys.isDown('DOWN')) {
       if (mayFlip) {
         mayFlip = false;
         inverted = !inverted;
