@@ -56,10 +56,10 @@ module.exports = function Plane (world, x, y) {
   this.draw = function (ctx) {
     if (inverted) ctx.scale(1, -1);
 
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = '#666';
+    ctx.lineWidth = 1.3;
 
     // gear linkage
+    ctx.strokeStyle = '#99c';
     ctx.beginPath();
     ctx.moveTo(0, 0);
     ctx.lineTo(width/3, height/1.4);
@@ -67,6 +67,7 @@ module.exports = function Plane (world, x, y) {
     ctx.stroke();
 
     // wing linkage
+    ctx.strokeStyle = '#99c';
     ctx.beginPath();
     ctx.moveTo(width/4.5, 0);
     ctx.lineTo(width/4.5, -height/2.5);
@@ -142,8 +143,8 @@ module.exports = function Plane (world, x, y) {
       }
     }
 
-    if (world.keys.isDown('J')) {
-      this.v = Math.min(this.v + (dur / 1000), 5);
+    if (world.keys.isDown('N')) {
+      this.v = Math.min(this.v + (dur / 1000), 1);
       if (maySmoke) {
         maySmoke = false;
         world.add(new Smoke(world, this.x, this.y, 12, [255, 255, 255]));
@@ -157,21 +158,21 @@ module.exports = function Plane (world, x, y) {
 
     // handle pitch up/down
 
-    if (world.keys.isDown('LEFT')) {
+    if (world.keys.isDown('COMMA')) {
       this.r -= Math.min(0.3, this.v) * dur / 80 * (inverted ? -1 : 1);
       if (this.r < 0) this.r += Math.PI * 2;
       this.r = this.r % (Math.PI * 2)
       this.v *= Math.pow(0.9998, dur);
     }
 
-    if (world.keys.isDown('RIGHT')) {
+    if (world.keys.isDown('SLASH')) {
       this.r += Math.min(0.3, this.v) * dur / 80 * (inverted ? -1 : 1);
       if (this.r < 0) this.r += Math.PI * 2;
       this.r = this.r % (Math.PI * 2)
       this.v *= Math.pow(0.9998, dur);
     }
     
-    if (world.keys.isDown('UP') || world.keys.isDown('DOWN')) {
+    if (world.keys.isDown('PERIOD')) {
       if (mayFlip) {
         mayFlip = false;
         inverted = !inverted;
@@ -222,7 +223,7 @@ module.exports = function Plane (world, x, y) {
 
     // limit velocity unless the jet is firing
 
-    if (!world.keys.isDown('J')) {
+    if (!world.keys.isDown('N')) {
       this.v = Math.min(0.4, this.v);
     }
 

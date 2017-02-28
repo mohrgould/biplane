@@ -6,6 +6,8 @@ module.exports = function (document) {
     DOWN: 40,
     J: 74,
     B: 66,
+    N: 78,
+    V: 86,
     X: 88,
     Y: 89,
     Z: 90,

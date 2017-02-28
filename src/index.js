@@ -52,16 +52,15 @@ for (var i=0; i<locs.length; i++)  {
 var guide = document.createElement('div');
 guide.style.position = 'absolute';
 guide.style.top = 0;
-guide.style.right = '20px';
-guide.style.color = '#444';
-guide.innerHTML = '<h3>Controls</h3><dl>' +
-  '<dt>X</dt><dd>Accelerate</dd>' +
-  '<dt>Left</dt><dd>Nose up</dd>' +
-  '<dt>Right</dt><dd>Nose down</dd>' +
-  '<dt>Up</dt><dd>Invert</dd>' +
-  '<dt>Space</dt><dd>Shoot</dd>' +
-  '<dt>B</dt><dd>Bomb</dd>' +
-  '<dt>J</dt><dd>Jet</dd>' +
+guide.style.right = 0;
+guide.innerHTML = '<dl>' +
+  '<dt>X</dt><dd>thrust</dd>' +
+  '<dt>N</dt><dd>nitrous</dd>' +
+  '<dt>B</dt><dd>bomb</dd>' +
+  '<dt>space</dt><dd>gun</dd>' +
+  '<dt>comma</dt><dd>pitch up</dd>' +
+  '<dt>slash</dt><dd>pitch down</dd>' +
+  '<dt>period</dt><dd>invert</dd>' +
   '</dl>';
 
 var lastTs = null;
