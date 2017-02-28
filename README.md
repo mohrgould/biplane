@@ -11,7 +11,7 @@ keys to pitch up and down. Press Space to fire guns, and "B" to drop a bomb.
 
 ## Demo
 
-[Play the game here on Github Pages.](https://mohrgould.github.io/biplane/)
+[Play the game here.](https://gould.io/biplane/)
 
 ## Development
 
